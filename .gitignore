@@ -1,0 +1,40 @@
+#generic
+tmp/
+*.log
+*.swp
+*.diff
+*.patch
+.cache
+
+# macosx
+*.DS_Store
+
+# windows
+cachesThumbs.db
+Desktop.ini
+
+# eclipse
+.buildpath
+.classpath
+.factorypath
+.project
+.ruleset
+.settings/
+
+# idea
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# netbeans
+/nbproject
+
+# vim
+.*.sw[a-p]
+
+# merge tooling
+*.orig
+
+# bazel
+bazel-*/*
