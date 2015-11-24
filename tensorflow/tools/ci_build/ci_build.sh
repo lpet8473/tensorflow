@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
 # Get the command line arguments.
-CONTAINER_TYPE=`echo "$1" | tr '[:upper:]' '[:lower:]'`
+CONTAINER_TYPE=$( echo "$1" | tr '[:upper:]' '[:lower:]' )
 shift 1
-COMMAND="$@"
+COMMAND=("$@")
 
 # Validate command line arguments.
 if [ "$#" -lt 1 ] || [[ ! "${CONTAINER_TYPE}" =~ ^(cpu|gpu|android)$ ]]; then
@@ -40,7 +40,7 @@ EXTRA_DEPS_DIR="${EXTRA_DEPS_DIR:-${HOME}/.tensorflow_extra_deps}"
 
 # Print arguments.
 echo "CONTAINER_TYPE: ${CONTAINER_TYPE}"
-echo "COMMAND: ${COMMAND}"
+echo "COMMAND: ${COMMAND[@]}"
 echo "WORKSAPCE: ${WORKSPACE}"
 echo "BUILD_TAG: ${BUILD_TAG}"
 echo "  (docker cotainer name will be ${BUILD_TAG}.${CONTAINER_TYPE})"
@@ -63,7 +63,7 @@ fi
 
 
 # Run the command inside the container.
-echo "Running '${COMMAND}' inside container ${BUILD_TAG}.${CONTAINER_TYPE}..."
+echo "Running '${COMMAND[@]}' inside ${BUILD_TAG}.${CONTAINER_TYPE}..."
 mkdir -p ${WORKSPACE}/bazel-user-cache-for-docker
 docker run \
     -v ${WORKSPACE}/bazel-user-cache-for-docker:/root/.cache \
@@ -71,4 +71,4 @@ docker run \
     -v ${EXTRA_DEPS_DIR}:/tensorflow_extra_deps \
     -w /tensorflow \
     ${BUILD_TAG}.${CONTAINER_TYPE} \
-    ${COMMAND}
+    "${COMMAND[@]}"
