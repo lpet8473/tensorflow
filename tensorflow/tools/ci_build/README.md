@@ -45,19 +45,19 @@ to docker caching. Individual builds are fast thanks to blaze caching.
 
 2. Clone tensorflow repository.
 
-```bash
+   ```bash
 git clone https://github.com/tensorflow/tensorflow.git
 ```
 
 3. Go to tensorflow directory
 
-```bash
+   ```bash
 cd tensorflow
 ```
 
 4. Build what you want, for example
 
-```bash
+   ```bash
 tensorflow/tools/ci_build/ci_build.sh CPU bazel test //tensorflow/...
 ```
 

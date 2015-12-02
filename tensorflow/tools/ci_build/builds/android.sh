@@ -41,11 +41,8 @@ EOF
 fi
 
 # Build Android demo app.
-bazel clean
-bazel build -c opt --copt=-mfpu=neon --color=yes //tensorflow/examples/android:tensorflow_demo
+bazel build -c opt --copt=-mfpu=neon //tensorflow/examples/android:tensorflow_demo
 
 # Cleanup workarounds.
 [ -e WORKSPACE.ci_build.orig ] && mv -f WORKSPACE.ci_build.orig WORKSPACE
 rm -rf tensorflow/examples/android/assets/
-
-TODO: remove the jobs and local_resources above

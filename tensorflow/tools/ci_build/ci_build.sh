@@ -29,7 +29,7 @@ function upsearch () {
 }
 
 # Set up WORKSPACE and BUILD_TAG. Jenkins will set them for you or we pick
-# reasonable defaaults if you run it outside of Jenkins.
+# reasonable defaults if you run it outside of Jenkins.
 WORKSPACE="${WORKSPACE:-$(upsearch WORKSPACE)}"
 BUILD_TAG="${BUILD_TAG:-tf_ci}"
 
