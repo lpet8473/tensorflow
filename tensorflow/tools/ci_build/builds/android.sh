@@ -22,8 +22,7 @@ else
     echo "       inside ci_build android docker container are set."
     echo "       Please configure it manually. See: https://github.com/tensorflow/tensorflow/tree/master/tensorflow/examples/android/README.md"
   else
-    mv WORKSPACE WORKSPACE.ci_build.orig
-    cat << EOF > WORKSPACE
+    cat << EOF >> WORKSPACE
 android_sdk_repository(
     name = "androidsdk",
     api_level = ${ANDROID_API_LEVEL},
@@ -36,7 +35,6 @@ android_ndk_repository(
     path="${ANDROID_NDK_HOME}",
     api_level=21)
 EOF
-    cat WORKSPACE.ci_build.orig >> WORKSPACE
   fi
 fi
 
@@ -44,5 +42,4 @@ fi
 bazel build -c opt --copt=-mfpu=neon //tensorflow/examples/android:tensorflow_demo
 
 # Cleanup workarounds.
-[ -e WORKSPACE.ci_build.orig ] && mv -f WORKSPACE.ci_build.orig WORKSPACE
 rm -rf tensorflow/examples/android/assets/
