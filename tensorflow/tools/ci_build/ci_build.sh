@@ -78,9 +78,9 @@ fi
 
 # Run the command inside the container.
 echo "Running '${COMMAND[@]}' inside ${BUILD_TAG}.${CONTAINER_TYPE}..."
-mkdir -p ${WORKSPACE}/bazel-user-cache-for-docker
+mkdir -p ${WORKSPACE}/bazel-ci_build-cache
 docker run \
-    -v ${WORKSPACE}/bazel-user-cache-for-docker:/root/.cache \
+    -v ${WORKSPACE}/bazel-ci_build-cache:/root/.cache \
     -v ${WORKSPACE}:/tensorflow \
     -v ${EXTRA_DEPS_DIR}:/tensorflow_extra_deps \
     -w /tensorflow \

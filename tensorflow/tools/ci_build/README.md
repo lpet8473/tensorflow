@@ -24,7 +24,7 @@ to docker caching. Individual builds are fast thanks to bazel caching.
 
 ## Implementation Details
 
-* The unusual `bazel-user-cache-for-docker` directory is mapped to docker
+* The unusual `bazel-ci_build-cache` directory is mapped to docker
   container performing the build using docker's --volume parameter.
   This way we cache bazel output between builds.
 
