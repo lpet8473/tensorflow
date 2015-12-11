@@ -4,7 +4,9 @@ MAINTAINER Jan Prach <jendap@google.com>
 
 # Install dependencies for bazel.
 RUN apt-get update && apt-get install -y \
-        g++ \
+	build-essential \
+	curl \
+	git \
         pkg-config \
         python-dev \
         python-numpy \
@@ -30,8 +32,8 @@ RUN add-apt-repository -y ppa:openjdk-r/ppa && \
 ENV BAZEL_VERSION 0.1.1
 RUN mkdir /bazel && \
     cd /bazel && \
-    wget https://github.com/bazelbuild/bazel/releases/download/$BAZEL_VERSION/bazel-$BAZEL_VERSION-installer-linux-x86_64.sh && \
-    wget -O /bazel/LICENSE.txt https://raw.githubusercontent.com/bazelbuild/bazel/master/LICENSE.txt && \
+    curl -fSsL -O https://github.com/bazelbuild/bazel/releases/download/$BAZEL_VERSION/bazel-$BAZEL_VERSION-installer-linux-x86_64.sh && \
+    curl -fSsL -o /bazel/LICENSE.txt https://raw.githubusercontent.com/bazelbuild/bazel/master/LICENSE.txt && \
     chmod +x bazel-*.sh && \
     ./bazel-$BAZEL_VERSION-installer-linux-x86_64.sh && \
     rm -f /bazel/bazel-$BAZEL_VERSION-installer-linux-x86_64.sh
