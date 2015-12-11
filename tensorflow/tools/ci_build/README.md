@@ -28,11 +28,7 @@ to docker caching. Individual builds are fast thanks to bazel caching.
   container performing the build using docker's --volume parameter.
   This way we cache bazel output between builds.
 
-* The `$HOME/.tensorflow_extra_deps` directory contains
-  [cudnn](https://developer.nvidia.com/cudnn).
-  Unfortunatelly this require you to agree a license to download.
-
-* The builds directory hithin this folder contains shell scripts to run within
+* The `builds` directory within this folder contains shell scripts to run within
   the container. They essentially contains workarounds for current limitations
   of bazel.
 
@@ -59,21 +55,6 @@ cd tensorflow
 
    ```bash
 tensorflow/tools/ci_build/ci_build.sh CPU bazel test //tensorflow/...
-```
-
-**Note**: For GPU you have to create `$HOME/.tensorflow_extra_deps` and manually
-install there required dependencies (i.e. cudnn) for which you have to agree
-to licences manually.
-
-
-#### CUDNN
-
-For GPU download the [cudnn](https://developer.nvidia.com/cudnn).
-You will download `cudnn-6.5-linux-x64-v2.tgz`. Run
-
-```bash
-mkdir -p $HOME/.tensorflow_extra_deps
-tar xzf cudnn-6.5-linux-x64-v2.tgz -C $HOME/.tensorflow_extra_deps
 ```
 
 
