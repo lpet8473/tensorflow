@@ -49,4 +49,6 @@ RUN echo "build --spawn_strategy=standalone --genrule_strategy=standalone" \
     >>/root/.bazelrc
 # Force bazel output to use colors (good for jenkins).
 RUN echo "common --color=yes" >>/root/.bazelrc
+# Increase default test timeout.
+RUN echo "test --test_timeout=3600" >>/root/.bazelrc
 ENV BAZELRC /root/.bazelrc

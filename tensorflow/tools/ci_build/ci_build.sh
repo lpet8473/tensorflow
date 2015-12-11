@@ -85,4 +85,4 @@ docker run \
     -v ${EXTRA_DEPS_DIR}:/tensorflow_extra_deps \
     -w /tensorflow \
     ${BUILD_TAG}.${CONTAINER_TYPE} \
-    "${COMMAND[@]}"
+    "tensorflow/tools/ci_build/builds/configured" "${CONTAINER_TYPE}" "${COMMAND[@]}"

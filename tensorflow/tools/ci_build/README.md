@@ -86,10 +86,10 @@ The jobs run by [ci.tensorflow.org](http://ci.tensorflow.org) include following:
 # Note: You can run the following one-liners yourself if you have Docker.
 
 # build and run cpu tests
-tensorflow/tools/ci_build/ci_build.sh CPU bazel test  --test_timeout=1800 //tensorflow/...
+tensorflow/tools/ci_build/ci_build.sh CPU bazel test //tensorflow/...
 
 # build gpu
-tensorflow/tools/ci_build/ci_build.sh GPU tensorflow/tools/ci_build/builds/gpu.sh
+tensorflow/tools/ci_build/ci_build.sh GPU bazel build -c opt --config=cuda //tensorflow/...
 
 # build pip with gpu support
 tensorflow/tools/ci_build/ci_build.sh GPU tensorflow/tools/ci_build/builds/gpu_pip.sh
