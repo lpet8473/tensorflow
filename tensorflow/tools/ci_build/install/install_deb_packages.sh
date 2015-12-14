@@ -19,6 +19,7 @@ set -e
 # Install dependencies from ubuntu deb repository.
 apt-get update
 apt-get install -y \
+    bash-completion \
     build-essential \
     curl \
     git \
