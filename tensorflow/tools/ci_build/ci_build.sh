@@ -59,6 +59,7 @@ echo ""
 
 # Build the docker container.
 echo "Building container (${BUILD_TAG}.${CONTAINER_TYPE})..."
+sed -i "s/INSERT_BAZEL_VERSION_HERE/${BAZEL_VERSION}/g" ${SCRIPT_DIR}/Dockerfile.${CONTAINER_TYPE}
 docker build -t ${BUILD_TAG}.${CONTAINER_TYPE} \
     -f ${SCRIPT_DIR}/Dockerfile.${CONTAINER_TYPE} ${SCRIPT_DIR}
 

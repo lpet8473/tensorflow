@@ -7,12 +7,13 @@ COPY install/install_deb_packages.sh /install/install_deb_packages.sh
 RUN /install/install_deb_packages.sh
 COPY install/install_openjdk8_from_ppa.sh /install/install_openjdk8_from_ppa.sh
 RUN /install/install_openjdk8_from_ppa.sh
-COPY install/install_bazel.sh /install/install_bazel.sh
-RUN /install/install_bazel.sh
 
 # Set up bazelrc.
 COPY install/.bazelrc /root/.bazelrc
 ENV BAZELRC /root/.bazelrc
+ENV BAZEL_VERSION INSERT_BAZEL_VERSION_HERE
+COPY install/install_bazel_from_git.sh /install/install_bazel_from_git.sh
+RUN /install/install_bazel_from_git.sh
 
 # Install extra libraries for android sdk.
 # (see http://stackoverflow.com/questions/33427893/can-not-run-android-sdk-build-tools-23-0-2-aapt)
