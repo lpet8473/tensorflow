@@ -73,7 +73,8 @@ docker run \
     -e "CI_BUILD_UID=$(id -u $USER)" \
     -e "CI_BUILD_GROUP=$(id -g --name $USER)" \
     -e "CI_BUILD_GID=$(id -g $USER)" \
-    -v ${WORKSPACE}:/tensorflow \
+    -v ${WORKSPACE}/tensorflow:/tensorflow \
+    -v ${WORKSPACE}/bazel/output:/usr/local/bin \
     -w /tensorflow \
     ${BUILD_TAG}.${CONTAINER_TYPE} \
     "tensorflow/tools/ci_build/builds/with_the_same_user" \

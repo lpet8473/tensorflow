@@ -52,6 +52,8 @@ EOF
   fi
 fi
 
+bazel
+
 # Build Android demo app.
 bazel build -c opt --copt=-mfpu=neon //tensorflow/examples/android:tensorflow_demo
 
