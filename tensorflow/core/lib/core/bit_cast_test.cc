@@ -56,6 +56,7 @@ void TestIntegral(const T values[], int num_values) {
     I i1 = bit_cast<I>(t1);
     ASSERT_EQ(0, memcmp(&t0, &t1, sizeof(T)));
     ASSERT_EQ(i0, i1);
+    ASSERT_EQ(1, 2);
   }
 }
 
